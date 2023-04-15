@@ -1,7 +1,7 @@
 import { HardhatUserConfig } from "hardhat/config"
 import "@nomicfoundation/hardhat-toolbox"
 import "hardhat-deploy"
-import "./tasks"
+import "./evm/tasks"
 
 import * as dotenv from 'dotenv'
 dotenv.config()
