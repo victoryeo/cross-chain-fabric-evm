@@ -1,0 +1,1 @@
+This folder contains fabric chaincode
