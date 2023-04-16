@@ -4,11 +4,46 @@
   "description": "This folder contains fabric chaincode",
   "main": "index.js",
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fabric-shim": "^2.5.2"
+    "fabric-shim": "^2.2.3",
+    "npm-run-all": "^4.1.5",
+    "ts-node": "^8.1.0",
+    "typescript": "^4.7.4",
+    "underscore": "^1.13.6",
+    "uuid": "^3.4.0"
+  },
+  "devDependencies": {
+    "@theledger/fabric-mock-stub": "^5.0.1",
+    "@types/underscore": "^1.11.4",
+    "@types/uuid": "^3.4.10",
+    "nyc": "^15.1.0"
+  },
+  "files": [
+    "src"
+  ],
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src"
+    ],
+    "exclude": [
+      "**/*.spec.js"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "lines": 1,
+    "functions": 1,
+    "branches": 1,
+    "all": true,
+    "check-coverage": true
   }
 }
