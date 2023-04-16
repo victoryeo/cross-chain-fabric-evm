@@ -1,0 +1,17 @@
+node_modules
+dist/
+build/
+src/**.jssoft
+.idea/*
+
+coverage
+.nyc_output
+*.log
+
+yarn.lock
+
+package
+.Trash-*
+
+../../.DS_Store
+../.DS_Store
