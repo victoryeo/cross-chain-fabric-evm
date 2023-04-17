@@ -1,6 +1,6 @@
 import { ClientIdentity, ChaincodeStub, Shim } from 'fabric-shim';
 import { UserIdentity } from './common';
-import { handleCommand } from './command';
+import { findHandleCommand } from './command';
 
 export default class TokenChaincode {
   /**
@@ -44,7 +44,7 @@ export default class TokenChaincode {
       };
 
       // Handle command
-      const result = await handleCommand(chaincodeStub, command, identity);
+      const result = await findHandleCommand(chaincodeStub, command, identity);
 
       // Return result
       return Shim.success(Buffer.from(JSON.stringify(result)));
