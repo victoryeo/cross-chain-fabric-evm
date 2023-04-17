@@ -4,8 +4,10 @@
   "description": "This folder contains fabric chaincode",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "run-s clean && tsc -p tsconfig.build.json",
+    "test": "run-s build test:*",
+    "test:health": "nyc --silent mocha --recursive --require ts-node/register './src/modules/health/handler/*.spec.ts'",
+    "clean": "trash dist test"
   },
   "author": "",
   "license": "ISC",
@@ -19,9 +21,13 @@
   },
   "devDependencies": {
     "@theledger/fabric-mock-stub": "^5.0.1",
+    "@types/chai": "^4.3.4",
+    "@types/jest": "^29.5.0",
     "@types/underscore": "^1.11.4",
     "@types/uuid": "^3.4.10",
-    "nyc": "^15.1.0"
+    "chai": "^4.3.7",
+    "nyc": "^15.1.0",
+    "trash-cli": "^5.0.0"
   },
   "files": [
     "src"
