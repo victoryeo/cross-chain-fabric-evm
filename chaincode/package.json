@@ -6,7 +6,7 @@
   "scripts": {
     "build": "run-s clean && tsc -p tsconfig.build.json",
     "test": "run-s build test:*",
-    "test:health": "nyc --silent mocha --recursive --require ts-node/register './src/modules/health/handler/*.spec.ts'",
+    "test:health": "cross-env NODE_ENV=Test nyc mocha --recursive --require ts-node/register './src/modules/health/handler/*.spec.ts'",
     "clean": "trash dist test"
   },
   "author": "",
@@ -22,10 +22,12 @@
   "devDependencies": {
     "@theledger/fabric-mock-stub": "^5.0.1",
     "@types/chai": "^4.3.4",
-    "@types/jest": "^29.5.0",
+    "@types/mocha": "^10.0.1",
     "@types/underscore": "^1.11.4",
     "@types/uuid": "^3.4.10",
     "chai": "^4.3.7",
+    "cross-env": "^7.0.3",
+    "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "trash-cli": "^5.0.0"
   },
