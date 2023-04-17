@@ -1,5 +1,5 @@
 import { ClientIdentity, ChaincodeStub, Shim } from 'fabric-shim';
-import { UserIdentity } from './common';
+import { UserIdentity, MockClientIdentity } from './common';
 import { findHandleCommand } from './command';
 
 export default class TokenChaincode {
@@ -22,8 +22,10 @@ export default class TokenChaincode {
    */
   public async Invoke(chaincodeStub: ChaincodeStub) {
     try {
+      console.log(`Invoke ${chaincodeStub}`)
       // Client identity information when it is registered to CA
       const clientIdentity = this.createClientIdentity(chaincodeStub);
+      console.log(`Invoke ${clientIdentity}`)
 
       const identity: UserIdentity = {
         id: clientIdentity.getID(),
@@ -35,7 +37,7 @@ export default class TokenChaincode {
       }
       console.info(JSON.stringify(identity));
       const ret = chaincodeStub.getFunctionAndParameters();
-      console.info(ret.fcn);
+      console.info(`command name: ${ret.fcn}`);
 
       const command = {
         name: ret.fcn, // Function name, will be mapped to command name
@@ -44,6 +46,7 @@ export default class TokenChaincode {
       };
 
       // Handle command
+      console.log(`Invoke ${command}`)
       const result = await findHandleCommand(chaincodeStub, command, identity);
 
       // Return result
@@ -55,6 +58,9 @@ export default class TokenChaincode {
   }
 
   private createClientIdentity(chaincodeStub: ChaincodeStub): ClientIdentity {
+    if (process.env.NODE_ENV === 'Test') {
+      return MockClientIdentity;
+    }
     return new ClientIdentity(chaincodeStub);
   }
 }
