@@ -1,0 +1,15 @@
+{
+  "name": "hlf-gw",
+  "version": "1.0.0",
+  "description": "This microservice is the gateway to communicate with Hyperledger Fabric Peer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fabric-client": "^1.4.20",
+    "fabric-network": "^2.2.17"
+  }
+}
