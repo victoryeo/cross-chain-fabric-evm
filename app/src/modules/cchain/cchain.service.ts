@@ -6,7 +6,7 @@ export class CChainService {
   constructor(private blockchainUtil: BlockchainUtil) { }
 
   async getStatus(): Promise<string> {
-    const ccPath: string = `${process.env.BC_HLF_URL}/api/fabric-client/cc/health/chaincode/GetHealth`;
+    const ccPath: string = `${process.env.BC_HLF_URL}/api/hlf-gw/cc/channel/chaincode/GetHealth`;
     const params = {};
 
     const retData = await this.blockchainUtil.sendGetRequestToHLF(
