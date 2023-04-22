@@ -4,7 +4,7 @@ import ___ from 'underscore';
 import { BaseCommandHandler, BaseCommand } from '../../../common';
 
 const handlers = (): any => ({
-  health: async () => {
+  GetHealth: async () => {
     return 'healthy';
   },
 });
