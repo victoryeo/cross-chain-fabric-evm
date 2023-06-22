@@ -16,6 +16,11 @@ export interface ICCService {
     chaincodeName: string
   ): Promise<string | undefined>;
 
+  listenEvent(
+    channelName: string,
+    chaincodeName: string
+  ): Promise<any>;
+
   evaluateTransaction(
     func: string,
     payload: any,
@@ -95,6 +100,33 @@ const CCService: ICCService = {
     gateway.disconnect();
 
     return undefined;
+  },
+
+  async listenEvent(
+    channelName: string,
+    chaincodeName: string
+  ): Promise<any> {
+    const identity: UserWalletIdentity = {
+      certificate: fs
+        .readFileSync(process.env.PEER_CERTIFICATE_FILE || '')
+        .toString(),
+      privateKey: fs
+        .readFileSync(process.env.PEER_PRIVATE_KEY_FILE || '')
+        .toString(),
+      mspID: process.env.ORG_NAME || '',
+    };
+
+    const { gateway, contract } = await getFabricContract(
+      identity,
+      channelName,
+      chaincodeName
+    );
+
+    // listen to chaincode event
+    contract.addContractListener(async (event) => {
+      console.log(event.eventName, event.payload.toString("utf-8"));
+    });
+
   },
 
   async evaluateTransaction(
