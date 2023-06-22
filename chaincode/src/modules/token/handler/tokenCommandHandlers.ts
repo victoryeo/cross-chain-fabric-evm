@@ -2,7 +2,7 @@ import { ChaincodeStub } from 'fabric-shim';
 import ___ from 'underscore';
 
 import { BaseCommandHandler, BaseCommand, validateCommand } from '../../../common';
-import { TokenCommandPayload } from '../index';
+import { TokenCommandPayload, QueryGenericPayload } from '../index';
 
 const handlers = (): any => ({
   ImportToken: async (
@@ -14,6 +14,14 @@ const handlers = (): any => ({
     if (errMsg) {
       throw "missing field";
     }
+  },
+
+  QueryToken: async (
+    payload: QueryGenericPayload,
+    chaincodeStub: ChaincodeStub
+  ) => {
+    let eventData = new Uint8Array([1, 2, 3, 4]);
+    await chaincodeStub.setEvent('testEvent', eventData);
   }
 });
 
