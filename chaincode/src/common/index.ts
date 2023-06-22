@@ -1,5 +1,7 @@
 import { ChaincodeStub } from 'fabric-shim';
 
+export * from './validateCmd';
+
 export interface UserIdentity {
   id: string;
   mspId: string;
