@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { BlockchainUtil } from '../../common/utils';
+import { Command, TokenCommandPayload } from '../../dtos/chaincode/token/command';
 
 @Injectable()
 export class CChainService {
@@ -19,6 +20,24 @@ export class CChainService {
   }
 
   async ImportToken(): Promise<any> {
+    const ccPath: string = `${process.env.BC_HLF_URL}/api/hlf-gw/cc/channel/chaincode/ImportToken`;
+    const tokenModel: TokenCommandPayload = {
+      name: "NAME",
+      symbol: "SYM",
+      coupon: "2",
+      faceValue: "2",
+      period: 1
+    } ;
+
+    const requestBody: Command = {
+      name: 'ImportToken',
+      payload: tokenModel,
+    };
+
+    const retData = await this.blockchainUtil.sendPostRequestToHLF(
+      ccPath,
+      requestBody
+    );
     return 0;
   }
 }
