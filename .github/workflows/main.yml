@@ -1,0 +1,18 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Build and Deploy
+
+jobs:
+  build-chaincode:
+    name: Build Chaincode
+    runs-on: actuated
+    steps:
+      - name: Build Chaincode
+        shell: bash
+        run: |
+          cd chaincode
+          npm run build
+
