@@ -6,7 +6,7 @@
   "scripts": {
     "build": "run-s clean && tsc -p tsconfig.build.json",
     "test": "run-s build test:*",
-    "test:health": "cross-env NODE_ENV=Test nyc mocha --recursive --require ts-node/register './src/modules/health/handler/*.spec.ts'",
+    "test:unit": "cross-env NODE_ENV=Test nyc mocha --recursive --require ts-node/register './src/**/*.spec.ts'",
     "clean": "trash dist test"
   },
   "author": "",
