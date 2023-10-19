@@ -20,8 +20,8 @@ const handlers = (): any => ({
     payload: QueryGenericPayload,
     chaincodeStub: ChaincodeStub
   ) => {
-    let eventData = new Uint8Array([1, 2, 3, 4]);
-    await chaincodeStub.setEvent('testEvent', eventData);
+    //let eventData = new Uint8Array([1, 2, 3, 4]);
+    //await chaincodeStub.setEvent('testEvent', eventData);
   }
 });
 
