@@ -2,21 +2,6 @@
   "name": "ImportToken",
   "payload": {
     "identifier": "fa138114-04ac-4ba0-ba16-d3a6496ac206",
-    "metadata": {
-      "docType": "io.aureus.resources.part",
-      "createdDate": "2020-08-16T20:48:28.348Z",
-      "updatedDate": "2020-08-16T20:48:28.348Z",
-      "createdBy": "ADE"
-    },
-    "partNum": "11111",
-    "serialNum": "11111-1111111",
-    "certificateNo": "1A",
-    "batchNum": "11111-111111-111111111",
-    "materialClass": "R",
-    "ownedByCompany": "MAA",
-    "tsn": "123",
-    "csn": "456",
-    "tso": "789",
-    "description": "Part A"
+    "name": "Token A"
   }
 }
