@@ -1,11 +1,14 @@
 import { ChaincodeStub } from 'fabric-shim';
 import { UserIdentity, BaseCommand, BaseCommandHandler } from '../common';
 import { HealthCommandHandler } from '../modules/health';
+import { TokenCommandHandler } from '../modules/token';
+
 /**
  * Define all command handler here
  */
  const commandHandlers: BaseCommandHandler[] = [
   new HealthCommandHandler(),
+  new TokenCommandHandler(),
 ];
 
 /**
