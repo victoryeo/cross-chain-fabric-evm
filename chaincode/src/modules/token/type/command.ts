@@ -9,6 +9,7 @@ export interface TokenCommandPayload {
   /**
    * A sequence of characters used to uniquely identify the resource.
    */
+  identifier: string;
   name: string;
   symbol: string;
   faceValue: string;
