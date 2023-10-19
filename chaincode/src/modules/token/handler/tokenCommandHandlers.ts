@@ -3,6 +3,7 @@ import ___ from 'underscore';
 
 import { BaseCommandHandler, BaseCommand, validateCommand } from '../../../common';
 import { TokenCommandPayload, QueryGenericPayload } from '../index';
+import { TokenResourceModel } from '../type/model';
 
 const handlers = (): any => ({
   ImportToken: async (
@@ -14,6 +15,12 @@ const handlers = (): any => ({
     if (errMsg) {
       throw "missing field";
     }
+    console.log("inside ImportToken")
+
+    const model: TokenResourceModel = {
+      ...payload,
+    };
+    return model;
   },
 
   QueryToken: async (
@@ -22,7 +29,30 @@ const handlers = (): any => ({
   ) => {
     //let eventData = new Uint8Array([1, 2, 3, 4]);
     //await chaincodeStub.setEvent('testEvent', eventData);
-  }
+  },
+  ValidateRequiredFields: async (payload: TokenCommandPayload) => {
+    let missedFieldMsg: string = '';
+    const payloadProp: string[] = Object.keys(payload);
+    const missedFields: string[] = [];
+    const requiredFields: string[] = [
+      'identifier',
+    ];
+    for (let i = 0; i < payloadProp.length; i += 1) {
+      if (
+        requiredFields.includes(payloadProp[i]) &&
+        ___.isEmpty(payload[payloadProp[i]])
+      ) {
+        missedFields.push(payloadProp[i]);
+      }
+    }
+    if (missedFields.length) {
+      missedFieldMsg = `${
+        "errors"
+      }: ${missedFields.toString()}`;
+    }
+
+    return missedFieldMsg;
+  },
 });
 
 
