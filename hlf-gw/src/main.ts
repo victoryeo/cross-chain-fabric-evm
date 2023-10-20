@@ -20,7 +20,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api/fabric-client');
 
   console.log(`PORT ${process.env.PORT_NO}`)
-  const server2 = await app.listen(process.env.PORT_NO || 3000);
+  const server2 = await app.listen(process.env.PORT_NO || 3002);
 
   server2.setTimeout(600000); // Timeout is 10 minutes
 }
