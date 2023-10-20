@@ -38,6 +38,7 @@ export class CChainService {
       ccPath,
       requestBody
     );
+    console.log(retData)
     return 0;
   }
 }
