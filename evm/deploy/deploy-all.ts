@@ -1,6 +1,5 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types"
 import { DeployFunction } from "hardhat-deploy/types"
-const crypto = require('crypto');
 
 const func: DeployFunction = async function ({
     deployments,
