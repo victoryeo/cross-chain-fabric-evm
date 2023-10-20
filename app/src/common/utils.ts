@@ -12,7 +12,7 @@ export class BlockchainUtil {
     };
 
     axiosRetry(axios, {
-      retries: 3,
+      retries: 1,
       retryDelay: retryCount => {
         return retryCount * 5000;
       },
@@ -27,7 +27,7 @@ export class BlockchainUtil {
     };
 
     axiosRetry(axios, {
-      retries: 3,
+      retries: 1,
       retryDelay: retryCount => {
         return retryCount * 5000;
       },
