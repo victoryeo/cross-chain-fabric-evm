@@ -19,7 +19,8 @@ async function bootstrap() {
   app.enableCors();
   app.setGlobalPrefix('api/fabric-client');
 
-  const server2 = await app.listen(process.env.PORT || 3000);
+  console.log(`PORT ${process.env.PORT_NO}`)
+  const server2 = await app.listen(process.env.PORT_NO || 3000);
 
   server2.setTimeout(600000); // Timeout is 10 minutes
 }
